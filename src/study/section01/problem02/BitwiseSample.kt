@@ -29,14 +29,30 @@ fun main() {
     bitSet.set(129)
     println(bitSet.size())  //256
 
-    //bitwise operation
+    println("==========================================================")
+
+    //bitwise operation - and, or
     val number1 = 12
     val number2 = 25
     val result: Int
+
+    //    12 = 00001100 (In Binary)
+//    25 = 00011001 (In Binary)
+    //2진법으로 표현, padStart로 빈자리 채우기
+    println(number1.toString(2).padStart(8,'0'))
+    println(number2.toString(2).padStart(8,'0'))
 
 //    result = number1 or number2
 //    println(result) //29
 
     result = number1 and number2
     println(result) //8
+
+    //shift
+    //shl - shift left
+    //shr - shift right
+    val number3 = 212
+    println(number3.toString(2).padStart(16,'0')) //212
+    println(number3.shl(1).toString(2).padStart(16,'0')) // 424
+    println(number3.shr(1).toString(2).padStart(16,'0')) // 106
 }
