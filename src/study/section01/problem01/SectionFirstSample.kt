@@ -1,5 +1,6 @@
 package study.section01
 
+import study.section01.utils.Utils
 import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
@@ -12,7 +13,7 @@ fun main() {
     val measuredFunTime = measureTimedValue {
         //TODO input파일 받아와서 처리하는부분..
 //        val tempInput = arrayListOf<Int>(7, 5, 9, 0, 3, 1, 6, 2, 9, 1, 4, 8, 0, 5, 2)
-        val tempInput = makeRandomList()
+        val tempInput = Utils().makeRandomList(null)
 
         //초기화방식 잘알아두기..
         val myList = IntArray(tempInput.size + 1) { 0 }
@@ -35,28 +36,28 @@ fun main() {
 
 }
 
-fun makeRandomList(): List<Int> {
-    //천만까지 만들고 shuffled 적용
-    val resultList = Array<Int>(10000000) { i -> i }.toList().shuffled()
-
-    println(resultList)
-
-    return resultList
-
-    //    val range = (0..10000000)
-//    while (resultSet.size < 10000000) {
-//        val myNumber = range.random()
-//        println(myNumber)
-//        resultSet.add(myNumber)
-//    }
+//fun makeRandomList(): List<Int> {
+//    //천만까지 만들고 shuffled 적용
+//    val resultList = Array<Int>(10000000) { i -> i }.toList().shuffled()
 //
-//    return resultSet.toList()
-
-//    return arrayListOf<Int>(2, 3, 4, 5)
-}
+//    println(resultList)
+//
+//    return resultList
+//
+//    //    val range = (0..10000000)
+////    while (resultSet.size < 10000000) {
+////        val myNumber = range.random()
+////        println(myNumber)
+////        resultSet.add(myNumber)
+////    }
+////
+////    return resultSet.toList()
+//
+////    return arrayListOf<Int>(2, 3, 4, 5)
+//}
 
 fun writeFile(result: List<Int>) {
-    val path = "/Users/jihuncha/Personal/AlgorithmKotlin/file"
+    val path = "/Users/chajihun/Workspace/git_all/AlgorithmKotlin/file"
     val dir = File(path)
 
     if (!dir.exists()) {
