@@ -5,16 +5,22 @@ import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.collect
 
-fun main() = runBlocking<Unit> {
+//fun main() = runBlocking<Unit> {
+fun main() {
     println("main start")
-    val scope = GlobalScope
-    scope.launch {
+//    val scope = GlobalScope
+    //TODO 왜 글로벌스코프로 안되지?
+//    GlobalScope.launch
+    runBlocking {
         // https://stackoverflow.com/questions/65559153/is-kotlin-flows-collect-is-only-internal-kotlinx-coroutines-api
-        makeFlow().buffer().collect { value ->
+//        runBlocking {
+        makeFlow().collect { value ->
             println("got $value")
         }
         println("flow is completed")
+//        }
     }
+    println("End Main")
 }
 
 fun makeFlow() = flow {
