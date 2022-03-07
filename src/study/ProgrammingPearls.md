@@ -76,7 +76,6 @@
   2. 비트 논리 연산(예: and, or 및 shift)을 사용하여 비트 벡터를 구현하는 방법
     * https://www.programiz.com/kotlin-programming/bitwise in kotlin
     * 비트 백터 - 코틀린으로 BitSet을 이용하여 구현한다.
-    * 
   3. 런타임 효율성은 설계 목표의 중요한 부분이었고 결과 프로그램은 충분히 효율적이었습니다. 
   시스템에서 비트맵 정렬을 구현하고 실행 시간을 측정하십시오. 
   시스템 정렬 및 문제 1의 정렬과 어떻게 비교됩니까? 
@@ -89,6 +88,11 @@
 ### Todo
 
 1. Tim Sort란?
+
+220307 - 1. bitset직접 만들어보기.. -> 그리고 시간 재보기. (신짱은 파이선 속도가 왜 더 느린지 알아오기)
+         2. 문제 2번 풀이 헤석
+         3. 시간남으면 4~5번까지 풀어보기.
+
 
 ### 참고자료
   * gitignore - https://stackoverflow.com/questions/29386242/android-studio-gitignore-wont-ignore-iml

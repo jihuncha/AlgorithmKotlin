@@ -29,11 +29,11 @@ fun measureUsingBitset(numberList : List<Int>) {
         sortUsingBitset(numberList)
     }
 
-    println("measureUsingBitwise - ${measuredFunTime.duration}")
+    println("measureUsingBitset - ${measuredFunTime.duration}")
 }
 
 fun sortUsingBitset(numberList : List<Int>): List<Int> {
-    val bitset = BitSet(10000000)
+    val bitset = BitSet(1000000)
 
     for (i in numberList) {
         bitset.set(i)
