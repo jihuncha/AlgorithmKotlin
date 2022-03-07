@@ -1,14 +1,16 @@
 package practice.kotlinsample
 
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.collect
 
-fun main() {
+fun main() = runBlocking<Unit> {
     println("main start")
     val scope = GlobalScope
     scope.launch {
-        makeFlow().collect { value ->
+        // https://stackoverflow.com/questions/65559153/is-kotlin-flows-collect-is-only-internal-kotlinx-coroutines-api
+        makeFlow().buffer().collect { value ->
             println("got $value")
         }
         println("flow is completed")
