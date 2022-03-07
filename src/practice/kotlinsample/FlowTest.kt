@@ -10,17 +10,27 @@ fun main() {
     println("main start")
 //    val scope = GlobalScope
     //TODO 왜 글로벌스코프로 안되지?
-//    GlobalScope.launch
+//    GlobalScope.launch {
+    //TODO https://thinking-face.tistory.com/entry/Kotlin-Coroutine-Basics 참고
     runBlocking {
         // https://stackoverflow.com/questions/65559153/is-kotlin-flows-collect-is-only-internal-kotlinx-coroutines-api
-//        runBlocking {
         makeFlow().collect { value ->
             println("got $value")
         }
         println("flow is completed")
-//        }
     }
-    println("End Main")
+
+
+    println("End Main Flow")
+
+    println("------------------------------------------------------")
+
+    GlobalScope.launch {
+        delay(1000L)
+        println("World!")
+    }
+    println("Hello,")
+    Thread.sleep(2000L)
 }
 
 fun makeFlow() = flow {
