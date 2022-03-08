@@ -1,5 +1,7 @@
 package study.section01.homework
 
+import java.util.Arrays
+
 //class BitSetMine(range:Int) {
 //    constructor()
 //}
@@ -9,9 +11,26 @@ fun main() {
     val tempCheck = 1 shl 6
     println(tempCheck)
 
-    BitSetMine(20)
+    val temp = BitSetMine()
+    println(temp.words.size)
+    println(temp.toString())
+
+    val tempSecond = BitSetMine(2)
+    println(tempSecond.words.size)
+    println(tempSecond.toString())
 }
 
-class BitSetMine(var nBits : Int = 1 shl 6) {
+//default value - 64 bit으로 설정
+class BitSetMine() {
+    var nBits = 1 shl 6
+    var words : Array<Long> = Array<Long>(1 shl 6) {0}
 
+    constructor(bitNumber: Int) : this() {
+        this.nBits = bitNumber
+        this.words = Array<Long>(nBits){0}
+    }
+
+    override fun toString(): String {
+        return words.contentDeepToString()
+    }
 }
