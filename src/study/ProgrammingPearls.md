@@ -80,7 +80,7 @@
   시스템에서 비트맵 정렬을 구현하고 실행 시간을 측정하십시오. 
   시스템 정렬 및 문제 1의 정렬과 어떻게 비교됩니까? 
   n이 10,000,000이고 입력 파일에 1,000,000개의 정수가 포함되어 있다고 가정합니다.
-     * 제대로한지 모르겠지만, 10배정도 차이가나는거같음..? [problem03](/study/section01/problem3/RuntimeEfficient.kt)
+     * 제대로한지 모르겠지만, 10배정도 차이가나는거같음..? [problem03](/study/section01/problem03/RuntimeEfficient.kt)
   
   4. d
   5. d
@@ -94,7 +94,15 @@
 * 220307
 1. bitset직접 만들어보기.. -> 그리고 시간 재보기. (신짱은 파이선 속도가 왜 더 느린지 알아오기)
 2. 문제 2번 풀이 헤석
-3. 시간남으면 4~5번까지 풀어보기.
+    * C언어는 int 32bit - > 2의 5승
+    * 자바/코틀린 bitset은 long[]로 구현됨 -> long 64 bit -> 2의 6승
+    * 자바는 왜 6씩 shift하냐
+      * https://www.codeshelper.com/article/34286.html
+    * 왜 int형을 안쓰고 Long을쓰냐??
+      * https://stackoverflow.com/questions/32110554/why-is-the-internal-data-of-bitset-in-java-stored-as-long-instead-of-int-in
+
+
+4. 시간남으면 4~5번까지 풀어보기.
 
 
 ### 참고자료

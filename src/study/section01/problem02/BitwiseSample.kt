@@ -5,6 +5,7 @@ import java.util.*
 
 fun main() {
     val bitSet = BitSet()
+    println(bitSet.size())  //64
 
     println(bitSet)
 

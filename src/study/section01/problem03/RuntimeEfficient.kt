@@ -1,4 +1,4 @@
-package study.section01.problem3
+package study.section01.problem03
 
 import study.section01.utils.Utils
 import java.util.*
