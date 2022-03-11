@@ -27,7 +27,12 @@ class BitSetMine() {
 
     constructor(bitNumber: Int) : this() {
         this.nBits = bitNumber
-        this.words = Array<Long>(nBits){0}
+//        this.words = Array<Long>(nBits){0}
+        initWords(bitNumber)
+    }
+
+    fun initWords(bitNumber : Int) {
+        words = Array<Long>(((bitNumber-1) shr 6) + 1) {0}
     }
 
     override fun toString(): String {
