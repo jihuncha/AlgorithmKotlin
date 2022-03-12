@@ -1,6 +1,6 @@
 package study.section01.homework
 
-import java.util.Arrays
+import java.util.*
 
 //class BitSetMine(range:Int) {
 //    constructor()
@@ -18,12 +18,24 @@ fun main() {
     val tempSecond = BitSetMine(2)
     println(tempSecond.words.size)
     println(tempSecond.toString())
+
+    println("========================================")
+    val test = BitSet(1)
+    println(test.size())
+
+    val test2 = BitSet()
+    // 이게 64비트네..? 2에 6승이니까. 근데 숫자는 한개만생성하네??
+    println(1 shl 6)
 }
 
 //default value - 64 bit으로 설정
 class BitSetMine() {
+    companion object {
+        const val BIT_PER_WORD = 1 shl 6
+    }
+
     var nBits = 1 shl 6
-    var words : Array<Long> = Array<Long>(1 shl 6) {0}
+    var words: Array<Long> = initWords(BIT_PER_WORD)
 
     constructor(bitNumber: Int) : this() {
         this.nBits = bitNumber
@@ -31,11 +43,16 @@ class BitSetMine() {
         initWords(bitNumber)
     }
 
-    fun initWords(bitNumber : Int) {
-        words = Array<Long>(((bitNumber-1) shr 6) + 1) {0}
+    fun initWords(bitNumber: Int): Array<Long> {
+        println("test - ${(bitNumber - 1) shr 6}")
+        return Array<Long>(((bitNumber - 1) shr 6) + 1) { 0 }
     }
 
     override fun toString(): String {
         return words.contentDeepToString()
+    }
+
+    fun size() : Int {
+        return words.size * BIT_PER_WORD
     }
 }
