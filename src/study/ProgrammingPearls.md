@@ -98,10 +98,10 @@
     * 자바/코틀린 bitset은 long[]로 구현됨 -> long 64 bit -> 2의 6승
     * 자바는 왜 6씩 shift하냐
       * https://www.codeshelper.com/article/34286.html
+      * int보다 long이 한자리 많아서(??)
     * 왜 int형을 안쓰고 Long을쓰냐??
       * https://stackoverflow.com/questions/32110554/why-is-the-internal-data-of-bitset-in-java-stored-as-long-instead-of-int-in
-
-
+      
 4. 시간남으면 4~5번까지 풀어보기.
 
 
