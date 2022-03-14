@@ -112,13 +112,15 @@ class BitSetMine() {
         expandTo(wordIndex)
 
 //        println("wordSize - ${words.size} and wordIndex - $wordIndex")
-
+        //해당 index에 해당되는 숫자를 or 연산으로 더한다
         words[wordIndex] = words[wordIndex] or (1L shl bitIndex)
 //        words[wordIndex] = words[wordIndex] or (1L shl bitIndex)
     }
 
     fun get(bitIndex : Int): Boolean {
+        //index를 가져온다.
         val wordIndex = wordIndex(bitIndex)
+        //해당 index에 해당되는 숫자를 and 연산으로 확인한다.
         return (wordIndex < wordInUse
                 && words[wordIndex] and (1L shl bitIndex) != 0L)
     }
