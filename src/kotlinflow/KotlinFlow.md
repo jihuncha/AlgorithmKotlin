@@ -1,15 +1,10 @@
-### Kotlin Algorithm
+## Kotlin Flow Study
 
-#### Sort
-
-* sortedby
-* sortedwith -> 두 가지 요소 이상으로
-
-* CompareTo
-
-#### Kotlin Coroutine and Flow
+### Kotlin Coroutine and Flow
 
 * https://dalinaum.github.io/coroutines-example/
+
+#### Chap01
 
 1. **예제 1: 간단한 코루틴** <br>
    아주 간단한 코루틴을 수행해봅시다. 코루틴을 만드는 가장 간단한 함수는 runBlocking이라고 합니다. 이렇게 코루틴을 만드는 함수를 코루틴 빌더라고 합니다. runBlocking은 코루틴을 만들고 코드
@@ -30,9 +25,25 @@ launch 코루틴 빌더에 있는 내용이 runBlocking이 있는 메인 흐름 
 다 사용할 때 까지 launch의 코드 블록이 기다리는 것입니다. runBlocking은 Hello를 출력하고 나서 종료하지는 않고 launch 코드블록의 내용이 다 끝날 때까지 기다립니다. <br>
 
 5. **예제 5: delay 함수** <br>
-   Hello를 조금 더 늦게 수행시키기 위해서는 delay 함수를 호출해 봅시다. 인자로 밀리세컨드 단위의 시간을 지정할 수 있습니다.
+   Hello를 조금 더 늦게 수행시키기 위해서는 delay 함수를 호출해 봅시다. 인자로 밀리세컨드 단위의 시간을 지정할 수 있습니다. <br>
 
 6. **예제 6: 코루틴 내에서 sleep** <br>
    우리가 잘 아는 Thread.sleep을 호출하면 어떻게 될까요? 우리가 원하는 결과가 나오지 않았을 것입니다. Thread.sleep을 하면 코루틴이 아무 일을 하지 않는 동안에도 스레드를 양보하지 않고
-   독점합니다.
-7. 
+   독점합니다. <br>
+
+7. **예제 7: 한번에 여러 launch** <br>
+   1, 2, 3을 순서대로 수행시켜봅시다. 딜레이 값을 바꿔 보면 suspend된 이후 깨어나는 순서에 따라 출력 결과가 달라집니다. <br>
+
+8. **예제 8: 상위 코루틴은 하위 코루틴을 끝까지 책임진다.** <br>
+   runBlocking 안에 두 launch가 속해 있는데 계층화되어 있어 구조적입니다. runBlocking은 그 속에 포함된 launch가 다 끝나기 전까지 종료되지 않습니다.<br>
+
+9. **예제 9: suspend 함수** <br>
+   delay, launch 등 지금까지 봤던 함수들은 코루틴 내에서만 호출 할 수 있습니다. 
+그럼 이 함수들을 포함한 코드들을 어떻게 함수로 분리할 수 있을까요? 
+코드의 일부를 함수로 분리할 때는 함수의 앞에 suspend 키워드를 붙이면 됩니다. 
+doOne은 delay와 같은 함수(suspend인 함수)를 호출하지 않았기 때문에 suspend를 붙이지 않은 일반 함수로 해도 됩니다.
+만약 suspend 함수를 다른 함수에서 호출하려면 그 함수가 suspend 함수이거나 코루틴 빌더를 통해 코루틴을 만들어야 합니다. <br>
+
+#### Chap02
+
+10. 

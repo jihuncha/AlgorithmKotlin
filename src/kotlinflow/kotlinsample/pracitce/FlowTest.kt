@@ -1,9 +1,7 @@
-package practice.kotlinsample
+package kotlinflow.kotlinsample.pracitce
 
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.collect
 
 //fun main() = runBlocking<Unit> {
 fun main() {

@@ -1,4 +1,4 @@
-package practice.algorithm
+package algorithm.sort
 
 fun main() {
     val myArray = arrayOf(arrayOf("birst",12) , arrayOf("aecond", 13), arrayOf("ahird",11), arrayOf("bourth", 14))
