@@ -37,6 +37,27 @@ suspend fun doOneTwoThree() = coroutineScope {
 }
 
 //예제 15: 취소 불가능한 Job
+//suspend fun doCount() = coroutineScope {
+//    val job1 = launch(Dispatchers.Default) {
+//        var i = 1
+//        var nextTime = System.currentTimeMillis() + 100L
+//
+//        while (i <= 10) {
+//            val currentTime = System.currentTimeMillis()
+//            if (currentTime >= nextTime) {
+//                println(i)
+//                nextTime = currentTime + 100L
+//                i++
+//            }
+//        }
+//    }
+//
+//    delay(200L)
+//    job1.cancel()
+//    println("doCount Done!")
+//}
+
+//cancel과 join
 suspend fun doCount() = coroutineScope {
     val job1 = launch(Dispatchers.Default) {
         var i = 1
@@ -53,7 +74,9 @@ suspend fun doCount() = coroutineScope {
     }
 
     delay(200L)
-    job1.cancel()
-    job1.join()
+//    job1.cancel()
+//    job1.join()
+    //예제18.cancelAndJoin
+    job1.cancelAndJoin()
     println("doCount Done!")
 }

@@ -76,8 +76,11 @@ launch(Dispatchers.Default)는 그 다음 코드 블록을 다른 스레드에�
 * 취소가 되지 않았다.
 먼저 취소든 종료든 다 끝난 이후에 doCount Done!을 출력합시다. <br>
 
-16. 아아아
-17. ㅇ
+16. **예제 16: cancel과 join** <br>
+    cancel 이후에 join을 넣어서 실제로 doCount가 끝날 때 doCount Done!가 출력하게 했습니다. <br>
+
+17. **예제 17: cancelAndJoin** <br>
+    cancel을 하고 join을 하는 일은 자주 일어나는 일이기 때문에 한번에 하는 cancelAndJoin이 준비되어 있습니다.
 18. ㅇ
 19. ㅇ
 20. ㅇ
