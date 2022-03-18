@@ -3,6 +3,7 @@
 ### Kotlin Coroutine and Flow
 
 * https://dalinaum.github.io/coroutines-example/
+* https://kotlinworld.com/ - 정리 정말 너무 잘되있으심..존경
 
 #### Chap01 처음 만나는 코루틴
 
@@ -122,11 +123,33 @@ async, await 짝을 맞추는 것은 Microsoft .net C#의 영향으로 일반화
     코드를 수행하다 보면 예외가 발생할 수 있습니다. 예외가 발생하면 위쪽의 코루틴 스코프와 아래쪽의 코루틴 스코프가 취소됩니다. <br>
     getRandom2가 오류가 나서 getRandom1와 doSomething은 취소됩니다. (JobCancellationException 발생) 문제가 된 IllegalStateException도 외부에서 잡아줘야 합니다. <br>
 
-27. ㅇ
-28. ㅇ
-29. ㅇ
-30. ㅇ
+#### 코루틴 컨텍스트와 디스패처
+
+27. **예제 27: 코루틴 디스패처** <br>
+    코루틴의 여러 디스패처 Default, IO, Unconfined, newSingleThreadContext을 사용해봅시다. <br>
+    1. Default는 코어 수에 비례하는 스레드 풀에서 수행합니다.
+    2. IO는 코어 수 보다 훨씬 많은 스레드를 가지는 스레드 풀입니다. IO 작업은 CPU를 덜 소모하기 때문입니다.
+    3. Unconfined는 어디에도 속하지 않습니다. 지금 시점에는 부모의 스레드에서 수행될 것입니다.
+    4. newSingleThreadContext는 항상 새로운 스레드를 만듭니다. <br>
+28. **예제 28: async에서 코루틴 디스패처 사용** <br>
+    launch외에 async, withContext 등의 코루틴 빌더에도 디스패처를 사용할 수 있습니다. <br>
+
+29. **예제 29: Confined 디스패처 테스트** <br>
+    Confined는 처음에는 부모의 스레드에서 수행됩니다. 하지만 한번 중단점(suspension point)에 오면 바뀌게 됩니다. <br>
+    Confined는 중단점 이후 어느 디스패처에서 수행될지 예측하기 어렵습니다. 가능하면 확실한 디스패처를 사용합시다. <br>
+
+30. **예제 30: 부모가 있는 Job과 없는 Job**<br>
+    코루틴 스코프, 코루틴 컨텍스트는 구조화되어 있고 부모에게 계층적으로 되어 있습니다. 
+    코루틴 컨텍스트의 Job 역시 부모에게 의존적입니다. 부모를 캔슬했을 때의 영향을 확인해보세요. <br>
+    job.cancelAndJoin() 실행 후의 delay가 없다면 어떻게 될까요?<br>
+
 31. ㅇ
 32. ㅇ
 33. ㅇ
-34. 
+34. d
+35. d
+36. d
+37. d
+38. d
+39. d
+40. 
