@@ -96,11 +96,37 @@ suspend 함수들은 JobCancellationException를 발생하기 때문에 표준 t
     일정 시간이 끝난 후에 종료하고 싶다면 withTimeout을 이용할 수 있습니다. 취소가 되면 TimeoutCancellationException 예외가 발생합니다. <br>
 
 22. **예제 22: withTimeoutOrNull** <br>
-    예외를 핸들하는 것은 귀찮은 일입니다. withTimeoutOrNull을 이용해 타임 아웃할 때 null을 반환하게 할 수 있습니다.
-성공할 경우 whithTimeoutOrNull의 마지막에서 true를 리턴하게 하고 실패했을 경우 null을 반환할테니 엘비스 연산자(?:)를 이용해 false를 리턴하게 했습니다. 엘비스 연산자는 null 값인 경우에 다른 값으로 치환합니다.
+    예외를 핸들하는 것은 귀찮은 일입니다. withTimeoutOrNull을 이용해 타임 아웃할 때 null을 반환하게 할 수 있습니다. <br>
+성공할 경우 whithTimeoutOrNull의 마지막에서 true를 리턴하게 하고 실패했을 경우 null을 반환할테니 엘비스 연산자(?:)를 이용해 false를 리턴하게 했습니다. 엘비스 연산자는 null 값인 경우에 다른 값으로 치환합니다.<br>
 코틀린의 예외는 식(expression)이어 활용이 어렵지는 않습니다만 개인적으로는 null을 리턴하고 엘비스 연산자로 다루는게 더 편한 것 같습니다. <br>
 
-23. d
-24. d
-25. d
-26. 
+#### 서스펜딩 함수 활용
+
+23. **예제 23: suspend 함수들의 순차적인 수행** <br>
+    순차적으로 suspend 함수를 먼저 수행시켜봅시다.
+    대략 2000ms 이상 수행된다는 것을 볼 수 있습니다.
+순차적으로 수행되었기 때문에 getRandom1이 1000ms 정도를 소비하고 getRandom2가 1000ms 정도 소비하는 것입니다. <br>
+
+24. **예제 24: async를 이용해 동시 수행하기** <br>
+    aync 키워드를 이용하면 동시에 다른 블록을 수행할 수 있습니다. launch와 비슷하게 보이지만 수행 결과를 await키워드를 통해 받을 수 있다는 차이가 있습니다.
+결과를 받아야 한다면 async, 결과를 받지 않아도 된다면 launch를 선택할 수 있습니다. <br>
+await 키워드를 만나면 async 블록이 수행이 끝났는지 확인하고 아직 끝나지 않았다면 suspend되었다 나중에 다시 깨어나고 반환값을 받아옵니다.
+수행 결과를 보면 getRandom1과 getRandom2를 같이 수행해서 경과시간이 거의 반으로 줄어들었습니다. <br>
+많은 다른 언어들이 async, await 키워드를 가지고 있는데 그것과는 비슷하게 보이지만 조금 다릅니다. 코틀린은 suspend 함수를 호출하기 위해 어떤 키워드도 필요하지 않습니다. 코틀린의 suspend가 다른 언어에서 async와 같다고 보시면 됩니다. <br>
+async, await 짝을 맞추는 것은 Microsoft .net C#의 영향으로 일반화되었는데 어떠한 키워드를 붙이지 않는 Go언어의 양향을 받아 가능한 제거하려 노력했다고 합니다. 그럼에도 불구하고 Java언어와의 호환성 때문에 suspend(async) 키워드는 버릴 수 없었습니다. <br>
+
+25. **예제 25: aync 게으르게 사용하기** <br>
+    async 키워드를 사용하는 순간 코드 블록이 수행을 준비하는데, async(start = CoroutineStart.LAZY)로 인자를 전달하면 우리가 원하는 순간 수행을 준비하게 할 수 있습니다. 이후 start 메서드를 이용해 수행을 준비하게 할 수 있습니다. <br>
+
+26. **예제 26: async를 사용한 구조적인 동시성** <br>
+    코드를 수행하다 보면 예외가 발생할 수 있습니다. 예외가 발생하면 위쪽의 코루틴 스코프와 아래쪽의 코루틴 스코프가 취소됩니다. <br>
+    getRandom2가 오류가 나서 getRandom1와 doSomething은 취소됩니다. (JobCancellationException 발생) 문제가 된 IllegalStateException도 외부에서 잡아줘야 합니다. <br>
+
+27. ㅇ
+28. ㅇ
+29. ㅇ
+30. ㅇ
+31. ㅇ
+32. ㅇ
+33. ㅇ
+34. 
