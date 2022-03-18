@@ -80,9 +80,27 @@ launch(Dispatchers.Default)는 그 다음 코드 블록을 다른 스레드에�
     cancel 이후에 join을 넣어서 실제로 doCount가 끝날 때 doCount Done!가 출력하게 했습니다. <br>
 
 17. **예제 17: cancelAndJoin** <br>
-    cancel을 하고 join을 하는 일은 자주 일어나는 일이기 때문에 한번에 하는 cancelAndJoin이 준비되어 있습니다.
-18. ㅇ
-19. ㅇ
-20. ㅇ
-21. ㅇ
-22. 
+    cancel을 하고 join을 하는 일은 자주 일어나는 일이기 때문에 한번에 하는 cancelAndJoin이 준비되어 있습니다. <br>
+
+18. **예제 18: cancel 가능한 코루틴** <br>
+    isActive를 호출하면 해당 코루틴이 여전히 활성화된지 확인할 수 있습니다. isActive를 루프에 추가해봅시다. <br>
+
+19. **예제 19: finally를 같이 사용** <br>
+    launch에서 자원을 할당한 경우에는 어떻게 정리해야할까요?
+suspend 함수들은 JobCancellationException를 발생하기 때문에 표준 try catch finally로 대응할 수 있습니다. <br>
+
+20. **예제 20: 취소 불가능한 블록** <br>
+    어떤 코드는 취소가 불가능해야 합니다. withContext(NonCancellable)을 이용하면 취소 불가능한 블록을 만들 수 있습니다. 
+    취소 불가능한 코드를 finally절에 사용할 수도 있습니다.<br>
+21. **예제 21: 타임 아웃** <br>
+    일정 시간이 끝난 후에 종료하고 싶다면 withTimeout을 이용할 수 있습니다. 취소가 되면 TimeoutCancellationException 예외가 발생합니다. <br>
+
+22. **예제 22: withTimeoutOrNull** <br>
+    예외를 핸들하는 것은 귀찮은 일입니다. withTimeoutOrNull을 이용해 타임 아웃할 때 null을 반환하게 할 수 있습니다.
+성공할 경우 whithTimeoutOrNull의 마지막에서 true를 리턴하게 하고 실패했을 경우 null을 반환할테니 엘비스 연산자(?:)를 이용해 false를 리턴하게 했습니다. 엘비스 연산자는 null 값인 경우에 다른 값으로 치환합니다.
+코틀린의 예외는 식(expression)이어 활용이 어렵지는 않습니다만 개인적으로는 null을 리턴하고 엘비스 연산자로 다루는게 더 편한 것 같습니다. <br>
+
+23. d
+24. d
+25. d
+26. 

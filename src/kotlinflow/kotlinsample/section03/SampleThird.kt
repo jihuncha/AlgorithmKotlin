@@ -63,7 +63,9 @@ suspend fun doCount() = coroutineScope {
         var i = 1
         var nextTime = System.currentTimeMillis() + 100L
 
-        while (i <= 10) {
+        //예제18. isActive로 확인
+        println("check isActive - $isActive")
+        while (i <= 10 && isActive) {
             val currentTime = System.currentTimeMillis()
             if (currentTime >= nextTime) {
                 println(i)
@@ -76,7 +78,8 @@ suspend fun doCount() = coroutineScope {
     delay(200L)
 //    job1.cancel()
 //    job1.join()
-    //예제18.cancelAndJoin
+    //예제17.cancelAndJoin
     job1.cancelAndJoin()
+    println("check isActive - ${job1.isActive}")
     println("doCount Done!")
 }
