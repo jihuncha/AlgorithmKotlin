@@ -71,7 +71,10 @@ fun main() = runBlocking<Unit> {
         }
     }
 
+    println("active - ${job.isActive}, isCancelled - ${job.isCancelled}, isCompleted - ${job.isCompleted}")
     delay(500L)
     job.cancelAndJoin()
+    println("active - ${job.isActive}, isCancelled - ${job.isCancelled}, isCompleted - ${job.isCompleted}")
     delay(1000L)
+    println("active - ${job.isActive}, isCancelled - ${job.isCancelled}, isCompleted - ${job.isCompleted}")
 }
