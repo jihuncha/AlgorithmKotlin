@@ -4,62 +4,70 @@ import java.util.*
 
 fun main() {
     //결국초기화단계에서 6만큼이동 즉 1바이트만큼 (long형이기떄문)
-    val tempCheck = 1 shl 6
-//    println(tempCheck)
-
-    val temp = BitSetMine()
-//    println(temp.words.size)
-//    println(temp.toString())
-
-    val tempSecond = BitSetMine(2)
-//    println(tempSecond.words.size)
-//    println(tempSecond.toString())
-    println(tempSecond.wordIndex(129))
-
-    println("========================================")
-    val test = BitSetMine(1)
-    println(test.size())
-
-    test.set(1)
-    test.set(2)
-
-    println(Long.MAX_VALUE)
-    println(test.toString())
-
-    test.set(10)
-
-    println(test.toString())
-//    println(test.)
-
-    println(test.size())
-
-    test.set(64)
-    println(test.toString())
-    println(test.size())
-
-    test.set(10000)
-
-    println(test.size())
-
-    println(test.toString())
+//    val tempCheck = 1 shl 6
+////    println(tempCheck)
+//
+//    val temp = BitSetMine()
+////    println(temp.words.size)
+////    println(temp.toString())
+//
+//    val tempSecond = BitSetMine(2)
+////    println(tempSecond.words.size)
+////    println(tempSecond.toString())
+//    println(tempSecond.wordIndex(129))
+//
+//    println("========================================")
+//    val test = BitSetMine(1)
+//    println(test.size())
+//
+//    test.set(1)
+//    test.set(2)
+//
+//    println(Long.MAX_VALUE)
+//    println(test.toString())
+//
+//    test.set(10)
+//
+//    println(test.toString())
+////    println(test.)
+//
+//    println(test.size())
+//
+//    test.set(64)
+//    println(test.toString())
+//    println(test.size())
+//
+//    test.set(10000)
+//
+//    println(test.size())
+//
+//    println(test.toString())
 
 //    val test2 = BitSet()
     // 이게 64비트네..? 2에 6승이니까. 근데 숫자는 한개만생성하네??
 //    println(1 shl 6)
+
+    val test = BitSetMine(129)
+    println("testSize - ${test.size()}") // 64 * 3 = 192
+
+    test.set(55)
+
+    println("testGet - ${test.get(55)}")
+
+    val testTwo = BitSetMine(128)
+    println("testTwoSize - ${testTwo.size()}") // 64 * 3 = 128
+
 }
 
 //default value - 64 bit으로 설정
 class BitSetMine() {
     companion object {
         //1바이트가 Long타입이므로 그 만큼 늘려줘야하기 떄문 -> shiftLeft
-        const val BIT_PER_WORD = 1 shl 6
+        const val BIT_PER_WORD = 1 shl 6        // 64
 
         //Long 타입은 64비트 -> 비트가 6자리 이므로 6자리 정의
         const val ADDRESS_BITS_PER_WORD = 6
     }
-
-    //비트값
-//    var nBits = 1 shl 6
 
     //글자수값 (Long타입) - 초기의 경우 그냥 64로 정의한다 (Long)
     var words: LongArray = initWords(BIT_PER_WORD)
@@ -69,13 +77,13 @@ class BitSetMine() {
 
     constructor(bitNumber: Int) : this() {
 //        this.nBits = bitNumber
-        initWords(bitNumber)
+        words = initWords(bitNumber)
     }
 
     /**
      * 실제 Long 배열의 index를 반환하는듯 (?)
      * */
-    fun wordIndex(bitIndex: Int): Int {
+    private fun wordIndex(bitIndex: Int): Int {
 //        println("wordIndex - $bitIndex - ${bitIndex shr ADDRESS_BITS_PER_WORD} ")
         return bitIndex shr ADDRESS_BITS_PER_WORD
     }
@@ -86,11 +94,9 @@ class BitSetMine() {
      * */
     private fun initWords(bitNumber: Int): LongArray {
         return LongArray(wordIndex(bitNumber - 1) + 1) { 0 }
-//        return Array<Long>(((bitNumber - 1) shr 6) + 1) { 0 }
     }
 
     override fun toString(): String {
-//        return words.contentDeepToString()
         return words.contentToString()
     }
 
