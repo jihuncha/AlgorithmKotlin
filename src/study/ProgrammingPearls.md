@@ -108,7 +108,8 @@
       * https://stackoverflow.com/questions/32110554/why-is-the-internal-data-of-bitset-in-java-stored-as-long-instead-of-int-in
       * 명확한 해설이 없으나, 메모리 효율?때문인것으로 보여짐..      
 
-3. 시간남으면 4~5번까지 풀어보기.
+* 220404
+1. 6번까지 해오기..꼭!!
 
 
 ### 참고자료
