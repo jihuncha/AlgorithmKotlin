@@ -1,6 +1,6 @@
 package algorithm.greedy
 
-import java.util.Collections
+import java.io.IOException
 
 // https://www.acmicpc.net/problem/10610
 
@@ -34,16 +34,23 @@ N을 입력받는다. N는 최대 105개의 숫자로 구성되어 있으며, 0�
 //위 조건의 만족하는 숫자의 경우의수를 전부 탐색해야할듯??
 //한개라도 있을 경우 더 줄일 수 있지 않을까?
 
-///timeout......
+//timeout......
+// https://ucwoogong.com/72
+// 배수 - 각 자리의 합으로 그 배수와 동일하면된다..
 
+@Throws(NumberFormatException::class, IOException::class)
+fun main(args: Array<String>)  {
+//    val input = readln()
 
-fun main(args: Array<String>) {
-    val input = readln();
+//    print(checkNumber(input))
 
-    print(checkNumber(input))
+    val input = readln()
+
+    print(checkNumberSecond(input))
 }
 
-fun checkNumber (myNumber: String) : Int {
+//first Solution
+/*fun checkNumber (myNumber: String) : Int {
     //입력값에 0이 없는 경우는 -1 처리
     if (!myNumber.contains('0')) return -1
 
@@ -83,6 +90,30 @@ fun checkNumber (myNumber: String) : Int {
     }
 
     return -1;
+}*/
+
+//second Solution
+fun checkNumberSecond(myNumber: String): Int {
+    //입력값에 0이 없는 경우는 -1 처리
+    if (!myNumber.contains('0')) return -1
+
+    //String to MutableList
+    val charsList: MutableList<Char> = myNumber.toMutableList()
+
+    //0을 하나 제거한다. - 맨뒤에 있는 걸로 가정.
+    charsList.remove('0')
+
+    val resultList = mutableListOf<Int>()
+
+    for (i in charsList.indices) {
+        resultList.add(Integer.parseInt(charsList[i].toString()))
+    }
+
+    if (resultList.sum() % 3 != 0) return -1
+
+    resultList.sortDescending()
+
+    return Integer.parseInt(resultList.joinToString("") + '0')
 }
 
 fun <T : Comparable<T>> allPermutationsSP(list: List<T>): List<List<T>> {
