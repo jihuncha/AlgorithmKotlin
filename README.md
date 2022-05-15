@@ -19,6 +19,7 @@ Algorithm Study
 1. Greedy
    | 번호 | 제목 | 해결여부 | 내 풀이 | 풀이 코드 |
    | --- | --- | --- | --- | --- |
-   | 1 | [30](https://www.acmicpc.net/problem/10610) | 해결 | [해결/](com/huni/coding_site_problem/backjoon/greedy/greedy_back_1.py) | |
+   | 1 | [30](https://www.acmicpc.net/problem/10610) | 미해결 | [로직](src/algorithm/greedy/back10610Second.kt) | |
+   | 2 | [ATM](https://www.acmicpc.net/problem/11399) | 미해결 | [로직](src/algorithm/greedy/back10610Second.kt) | |
 
    
