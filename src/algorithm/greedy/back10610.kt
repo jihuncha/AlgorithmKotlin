@@ -5,7 +5,8 @@ import java.io.IOException
 // https://www.acmicpc.net/problem/10610
 
 /*문제
-어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에, 그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.
+어느 날, 미르코는 우연히 길거리에서 양수 N을 보았다. 미르코는 30이란 수를 존경하기 때문에,
+그는 길거리에서 찾은 수에 포함된 숫자들을 섞어 30의 배수가 되는 가장 큰 수를 만들고 싶어한다.
 
 미르코를 도와 그가 만들고 싶어하는 수를 계산하는 프로그램을 작성하라.
 
@@ -50,47 +51,47 @@ fun main(args: Array<String>)  {
 }
 
 //first Solution
-/*fun checkNumber (myNumber: String) : Int {
-    //입력값에 0이 없는 경우는 -1 처리
-    if (!myNumber.contains('0')) return -1
-
-    //String to MutableList
-    val charsList: MutableList<Char> = myNumber.toMutableList()
-
-    //0을 하나 제거한다. - 맨뒤에 있는 걸로 가정.
-    charsList.remove('0')
-
-    //큰수대로 sorting
-    charsList.sortDescending()
-
-    //TODO 순열 - 코틀린 순열 library없는거 충격적이네..
-//    for (i in 0..charsList.lastIndex - 1) {
-//        var temp = charsList.toList().toMutableList()
-////        println(temp)
-//        for (j in i + 2..charsList.lastIndex) {
-//            temp.let { gow ->
-//                Collections.swap(gow, j-1, j)
-//                println("result - $gow")
-//            }
-////            Collections.swap(temp, j, j)
-//            println(temp)
-//        }
+//fun checkNumber (myNumber: String) : Int {
+//    //입력값에 0이 없는 경우는 -1 처리
+//    if (!myNumber.contains('0')) return -1
 //
-//        Collections.swap(charsList, i, i+1)
-//        println("gogogogogo - $charsList")
+//    //String to MutableList
+//    val charsList: MutableList<Char> = myNumber.toMutableList()
+//
+//    //0을 하나 제거한다. - 맨뒤에 있는 걸로 가정.
+//    charsList.remove('0')
+//
+//    //큰수대로 sorting
+//    charsList.sortDescending()
+//
+//    //TODO 순열 - 코틀린 순열 library없는거 충격적이네..
+////    for (i in 0..charsList.lastIndex - 1) {
+////        var temp = charsList.toList().toMutableList()
+//////        println(temp)
+////        for (j in i + 2..charsList.lastIndex) {
+////            temp.let { gow ->
+////                Collections.swap(gow, j-1, j)
+////                println("result - $gow")
+////            }
+//////            Collections.swap(temp, j, j)
+////            println(temp)
+////        }
+////
+////        Collections.swap(charsList, i, i+1)
+////        println("gogogogogo - $charsList")
+////    }
+//
+//    val permuteList = allPermutationsSP(charsList)
+//
+//    for (i in permuteList.indices) {
+//        var result = permuteList[i].joinToString("").toInt()
+//        if (result % 3 == 0) {
+//            return result * 10
+//        }
 //    }
-
-    val permuteList = allPermutationsSP(charsList)
-
-    for (i in permuteList.indices) {
-        var result = permuteList[i].joinToString("").toInt()
-        if (result % 3 == 0) {
-            return result * 10
-        }
-    }
-
-    return -1;
-}*/
+//
+//    return -1;
+//}
 
 //second Solution
 fun checkNumberSecond(myNumber: String): Int {

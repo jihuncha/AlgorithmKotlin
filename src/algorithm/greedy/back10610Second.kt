@@ -4,7 +4,7 @@ import java.util.*
 
 
 fun main(args: Array<String>) {
-    val input = readln()
+    val input: String = readln()
 
     var sum = 0
 
