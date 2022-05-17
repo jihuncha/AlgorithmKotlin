@@ -21,5 +21,7 @@ Algorithm Study
    | --- | --- | --- | --- | --- |
    | 1 | [30](https://www.acmicpc.net/problem/10610) | 미해결 | [로직](src/algorithm/greedy/back10610Second.kt) | |
    | 2 | [ATM](https://www.acmicpc.net/problem/11399) | 해결 | [로직](src/algorithm/greedy/back11399.kt) | |
+   | 3 | [서강근육맨](https://www.acmicpc.net/problem/20300) | 해결 | [로직](src/algorithm/greedy/back11399.kt) | |
+   | 4 | [신입 사원](https://www.acmicpc.net/problem/1946) | 해결 | [로직](src/algorithm/greedy/back11399.kt) | |
 
    
