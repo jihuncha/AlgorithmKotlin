@@ -1,8 +1,6 @@
 package algorithm.greedy
 
 import java.util.*
-import kotlin.collections.ArrayDeque
-import kotlin.collections.ArrayList
 
 
 //https://www.acmicpc.net/problem/20300
@@ -56,20 +54,41 @@ fun main() {
     //Sorting
     arr.sort()
 
-    //deque 로 변경.. 메모리낭비 심할거같은데
-    val deque = ArrayDeque<Long>()
-    deque.addAll(arr)
+    var result:Long = 0
 
-    var result = 0
+    if (arr.size % 2 != 0) result = arr.removeLast().toLong()
 
-    if (deque.size % 2 != 0) result = deque.removeLast().toInt()
-
-    while (deque.size > 0) {
-        var left = deque.removeFirst().toInt()
-        var right = deque.removeLast().toInt()
+    for (i in arr.indices) {
+        var left = arr[i]
+        var right = arr[arr.size - i - 1]
 
         result = Math.max(result, (left + right))
     }
 
-    print(result)
+    println(result)
+}
+
+fun testLogic() {
+    val sc = Scanner(System.`in`)
+
+    val n = sc.nextInt()
+    val weight = LongArray(n)
+    for (i in 0 until n) {
+        weight[i] = sc.nextLong()
+    }
+    Arrays.sort(weight)
+    var maxnum: Long = 0
+    if (n % 2 == 0) {
+        for (i in 0 until n / 2) {
+            maxnum = Math.max(maxnum, weight[i] + weight[n - 1 - i])
+        }
+    } else {
+        maxnum = weight[n - 1]
+        for (i in 0 until (n - 1) / 2) {
+            maxnum = Math.max(maxnum, weight[i] + weight[n - 2 - i])
+        }
+    }
+
+
+    println(maxnum)
 }
