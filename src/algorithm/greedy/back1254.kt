@@ -38,6 +38,11 @@ package algorithm.greedy
 //aeaeabaeaeawbx
 
 //abcvwerscba
+//11글자인데
+//abcvwersrewvcba -> 15개면될거같은데
+//abcvwerscbabcsrewv -> 21개처리로해야함?????
+
+//0개 이상의 문자를 문자열 뒤에 추가해서 !! 문제잘보기..
 
 
 //팰랜드롬인 문자인 경우는 그대로출력
@@ -47,33 +52,59 @@ fun main() {
     val input = readln()
     val reverseInput = input.reversed()
 
-    //팰랜드롬인 경우
     if (input == reverseInput) {
         println(input.length)
         return
     }
 
-    var palindromeLength = 0
-
-    for (i in (input.length - 1) downTo  (input.length - 1) / 2) {
-        palindromeLength = Math.max(palindromeLength, checkPalindorome(input, i));
+    for (i in input.indices) {
+        if (isPalindrome(input.substring(i))) {
+            println(input.length + i)
+            return
+        }
     }
 
-
-//    var backIndex = input.length - 1
-//
-//    for (i in 0 .. input.length - 1) {
-//        if (input[i] == input[backIndex]) {
-//            backIndex -= 1
-//            palindromeLength += 1
-//            println("test $i,  $backIndex , $palindromeLength, ${input[i]}")
-//        }
-//    }
-
-    println("pa - $palindromeLength")
-
-    println(input.length + (input.length - palindromeLength))
+    println(input.length)
 }
+
+fun isPalindrome (input: String) : Boolean {
+    for (i in 0 .. (input.length) / 2) {
+        if (input[i] != input[input.length - 1 - i]) {
+            return false
+        }
+    }
+    return true
+}
+
+//    val input = readln()
+//    val reverseInput = input.reversed()
+//
+//    //팰랜드롬인 경우
+//    if (input == reverseInput) {
+//        println(input.length)
+//        return
+//    }
+//
+//    var palindromeLength = 0
+//
+//    for (i in (input.length - 1) downTo  (input.length - 1) / 2) {
+//        palindromeLength = Math.max(palindromeLength, checkPalindorome(input, i));
+//    }
+//
+//
+////    var backIndex = input.length - 1
+////
+////    for (i in 0 .. input.length - 1) {
+////        if (input[i] == input[backIndex]) {
+////            backIndex -= 1
+////            palindromeLength += 1
+////            println("test $i,  $backIndex , $palindromeLength, ${input[i]}")
+////        }
+////    }
+//
+//    println("pa - $palindromeLength")
+//
+//    println(input.length + (input.length - palindromeLength))
 
 fun checkPalindorome(input:String, lastIndex:Int) : Int {
     var backIndex = lastIndex
