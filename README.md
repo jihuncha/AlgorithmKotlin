@@ -29,6 +29,8 @@ Algorithm Study
    | --- | --- | --- | --- | --- |
    | 1 | [30](https://www.acmicpc.net/problem/10610) | 미해결 | [로직](src/algorithm/greedy/back10610Second.kt) | |
    | 2 | [ATM](https://www.acmicpc.net/problem/11399) | 해결 | [로직](src/algorithm/greedy/back11399.kt) | |
-   | 3 | [서강근육맨](https://www.acmicpc.net/problem/20300) | 해결 | [로직](src/algorithm/greedy/back11399.kt) | |
+   | 3 | [서강근육맨](https://www.acmicpc.net/problem/20300) | 해결 | [로직](src/algorithm/greedy/back20300.kt) | |
+   | 4 | [팰랜드롬만들기](https://www.acmicpc.net/problem/1254) | 해결 | [로직](src/algorithm/greedy/back11399.kt) | |
+   | 5 | [Z](https://www.acmicpc.net/problem/1074) | 해결 | [로직](src/algorithm/greedy/back11399.kt) | |
    
    
