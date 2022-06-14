@@ -38,6 +38,7 @@ package algorithm.greedy
 //aeaeabaeaeawbx
 
 //abcvwerscba
+
 //11글자인데
 //abcvwersrewvcba -> 15개면될거같은데
 //abcvwerscbabcsrewv -> 21개처리로해야함?????
@@ -120,7 +121,7 @@ fun checkPalindorome(input:String, lastIndex:Int) : Int {
         } else {
             if (connect) {
                 connect = false
-                realResult = Math.max(result, realResult)
+                realResult = result.coerceAtLeast(realResult)
                 result = 0
             }
         }
